@@ -1,4 +1,4 @@
-#define WIN32_LEAN_AND_MEAN
+п»ї#define WIN32_LEAN_AND_MEAN
 
 //#pragma comment(linker,"/MERGE:.rdata=.text")
 //#pragma comment(linker,"/FILEALIGN:512 /SECTION:.text,EWRX /IGNORE:4078")
@@ -13,26 +13,26 @@
 #include <commdlg.h>
 #include "Tester.h"
 /***********************************************************/
-// Глобальные константы
+// Р“Р»РѕР±Р°Р»СЊРЅС‹Рµ РєРѕРЅСЃС‚Р°РЅС‚С‹
 /***********************************************************/
-const int COUNT_SWND = 13;	// Количество окон для выбора тестирования
-const int COUNT_TWND = 17;	// Количество окон для тестирования
+const int COUNT_SWND = 13;	// РљРѕР»РёС‡РµСЃС‚РІРѕ РѕРєРѕРЅ РґР»СЏ РІС‹Р±РѕСЂР° С‚РµСЃС‚РёСЂРѕРІР°РЅРёСЏ
+const int COUNT_TWND = 17;	// РљРѕР»РёС‡РµСЃС‚РІРѕ РѕРєРѕРЅ РґР»СЏ С‚РµСЃС‚РёСЂРѕРІР°РЅРёСЏ
 /***********************************************************/
-// Перечисления
+// РџРµСЂРµС‡РёСЃР»РµРЅРёСЏ
 /***********************************************************/
 enum ge_StartWnd {wnd_PSel, wnd_PSelTest, wnd_SelTest, wnd_OneTest, wnd_OneRQ, wnd_OneRB, wnd_PFIO, wnd_FIO, wnd_ChekRand, wnd_ERQC, wnd_URQC, wnd_OnTime, wnd_Start};
 enum ge_TestWnd {wnd_PTextOut, wnd_TextOut, wnd_PInfo, wnd_PITime, wnd_PITest, wnd_PIBilet, wnd_PIQuwest, wnd_ChecGroup, wnd_Otv1, wnd_Otv2, wnd_Otv3, wnd_Otv4, wnd_Otv5, wnd_Otv6, wnd_Otv7, wnd_Otv8, wnd_Next};
 enum ge_ID {ID_SelTest = 120, ID_OneTest, ID_OneRQ, ID_OneRB, ID_Bilety, ID_ChekRand, ID_URQC, ID_OnTime, ID_Start, ID_Next, ID_Otv1, ID_Otv2, ID_Otv3, ID_Otv4, ID_Otv5, ID_Otv6, ID_Otv7, ID_Otv8, ID_OkStart};
 /***********************************************************/
-// Глобальные массивы
+// Р“Р»РѕР±Р°Р»СЊРЅС‹Рµ РјР°СЃСЃРёРІС‹
 /***********************************************************/
-HWND	ga_SelWnd[COUNT_SWND];											// Элементы управления в режиме выбора
-HWND	ga_TestWnd[COUNT_TWND];											// Элементы управления в режиме тестирования
-LPCSTR	ga_OtvNum[8] = {"1", "2", "3", "4", "5", "6", "7", "8"};		// Подписи номеров ответов
+HWND	ga_SelWnd[COUNT_SWND];											// Р­Р»РµРјРµРЅС‚С‹ СѓРїСЂР°РІР»РµРЅРёСЏ РІ СЂРµР¶РёРјРµ РІС‹Р±РѕСЂР°
+HWND	ga_TestWnd[COUNT_TWND];											// Р­Р»РµРјРµРЅС‚С‹ СѓРїСЂР°РІР»РµРЅРёСЏ РІ СЂРµР¶РёРјРµ С‚РµСЃС‚РёСЂРѕРІР°РЅРёСЏ
+LPCSTR	ga_OtvNum[8] = {"1", "2", "3", "4", "5", "6", "7", "8"};		// РџРѕРґРїРёСЃРё РЅРѕРјРµСЂРѕРІ РѕС‚РІРµС‚РѕРІ
 /***********************************************************/
-// Глобальные переменные
+// Р“Р»РѕР±Р°Р»СЊРЅС‹Рµ РїРµСЂРµРјРµРЅРЅС‹Рµ
 /***********************************************************/
-HWND g_About;				// Сюда выводим ридми и результаты теста
+HWND g_About;				// РЎСЋРґР° РІС‹РІРѕРґРёРј СЂРёРґРјРё Рё СЂРµР·СѓР»СЊС‚Р°С‚С‹ С‚РµСЃС‚Р°
 HWND gh_Wnd;
 HWND gh_Start;
 
@@ -44,13 +44,13 @@ int g_QuwestCount = 0;
 bool g_RButton = false;
 bool g_LButton = false;
 /***********************************************************/
-// Глобальные функции
+// Р“Р»РѕР±Р°Р»СЊРЅС‹Рµ С„СѓРЅРєС†РёРё
 /***********************************************************/
 void HideAll(void);
 void ShowStart(void);
 
 /***********************************************************/
-// Оконная функция
+// РћРєРѕРЅРЅР°СЏ С„СѓРЅРєС†РёСЏ
 /***********************************************************/
 LRESULT CALLBACK MainWndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 { 
@@ -58,7 +58,7 @@ LRESULT CALLBACK MainWndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 	//char szFile[256];
 	//char szFileTitle[256];
 	//char szCustomFilter[256];
-	char szFilter[256] = "Файлы тестов\0*.tst\0";
+	char szFilter[256] = "Р¤Р°Р№Р»С‹ С‚РµСЃС‚РѕРІ\0*.tst\0";
 
 	switch (uMsg) 
     { 
@@ -92,7 +92,7 @@ LRESULT CALLBACK MainWndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 				
 				/*
 				case IDM_OPEN:
-					//___ Открытие произвольного файла
+					//___ РћС‚РєСЂС‹С‚РёРµ РїСЂРѕРёР·РІРѕР»СЊРЅРѕРіРѕ С„Р°Р№Р»Р°
 					ZeroMemory(&opparam, sizeof(opparam));
 					opparam.lStructSize = sizeof(OPENFILENAME);
 					opparam.hwndOwner = hwnd;
@@ -107,7 +107,7 @@ LRESULT CALLBACK MainWndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 					szFileTitle[0] = '\0';
 					szFile[0] = '\0';
 					GetOpenFileName(&opparam);
-					// После добавить выбранные пользователем, т.к. UpdateMain() очищает список
+					// РџРѕСЃР»Рµ РґРѕР±Р°РІРёС‚СЊ РІС‹Р±СЂР°РЅРЅС‹Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј, С‚.Рє. UpdateMain() РѕС‡РёС‰Р°РµС‚ СЃРїРёСЃРѕРє
 					return 0;
 
 				case IDM_START:
@@ -117,7 +117,7 @@ LRESULT CALLBACK MainWndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 					g_Test.Reset();
 					HideAll();
 					SendMessage(ga_SelWnd[wnd_SelTest], LB_RESETCONTENT, NULL, NULL);
-					//___ В ДВ версии доступен только один режим
+					//___ Р’ Р”Р’ РІРµСЂСЃРёРё РґРѕСЃС‚СѓРїРµРЅ С‚РѕР»СЊРєРѕ РѕРґРёРЅ СЂРµР¶РёРј
 					SendMessage(ga_SelWnd[wnd_OneTest], BM_SETCHECK, BST_CHECKED, NULL);
 					hFind = FindFirstFile("*.tst", &FindData);
 					if(hFind != INVALID_HANDLE_VALUE)
@@ -131,7 +131,7 @@ LRESULT CALLBACK MainWndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 					}
 					else
 					{
-						MessageBox(gh_Wnd, "Не обнаружено ни одного теста!", "Внимание!", MB_OK | MB_ICONEXCLAMATION);
+						MessageBox(gh_Wnd, "РќРµ РѕР±РЅР°СЂСѓР¶РµРЅРѕ РЅРё РѕРґРЅРѕРіРѕ С‚РµСЃС‚Р°!", "Р’РЅРёРјР°РЅРёРµ!", MB_OK | MB_ICONEXCLAMATION);
 						return 0;
 					}
 					for(int i = 0; i < COUNT_SWND; i++)
@@ -158,19 +158,19 @@ LRESULT CALLBACK MainWndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 					{
 					case ID_SelTest:
 						if(HIWORD(wParam) == LBN_DBLCLK)
-							// Загрузка одного теста !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+							// Р—Р°РіСЂСѓР·РєР° РѕРґРЅРѕРіРѕ С‚РµСЃС‚Р° !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 						return 0;
-					//___ Запуск теста
+					//___ Р—Р°РїСѓСЃРє С‚РµСЃС‚Р°
 					case ID_Start:
 						if(HIWORD(wParam) == BN_CLICKED)
 						{
 							if((BOOL)SendMessage(ga_SelWnd[wnd_OneTest], BM_GETCHECK, NULL, NULL))
 							{
-								//___ Получаем индекс выделенного теста
+								//___ РџРѕР»СѓС‡Р°РµРј РёРЅРґРµРєСЃ РІС‹РґРµР»РµРЅРЅРѕРіРѕ С‚РµСЃС‚Р°
 								int file = (int)SendMessage(ga_SelWnd[wnd_SelTest], LB_GETCURSEL, NULL, NULL);
 								if(LB_ERR == file)
 								{
-									MessageBox(gh_Wnd, "Выберите тест", "Сообщение", MB_OK|MB_ICONEXCLAMATION);
+									MessageBox(gh_Wnd, "Р’С‹Р±РµСЂРёС‚Рµ С‚РµСЃС‚", "РЎРѕРѕР±С‰РµРЅРёРµ", MB_OK|MB_ICONEXCLAMATION);
 									return 0;
 								}
 								else
@@ -180,17 +180,17 @@ LRESULT CALLBACK MainWndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 									g_StrStat = tstr;
 									if(g_StrStat == "")
 									{
-										MessageBox(gh_Wnd, "Введите ФИО тестируемого", "Сообщение", MB_OK | MB_ICONEXCLAMATION);
+										MessageBox(gh_Wnd, "Р’РІРµРґРёС‚Рµ Р¤РРћ С‚РµСЃС‚РёСЂСѓРµРјРѕРіРѕ", "РЎРѕРѕР±С‰РµРЅРёРµ", MB_OK | MB_ICONEXCLAMATION);
 										return 0;
 									}
 									g_StrStat += '\n';
-									//___ Заносим имя файла
+									//___ Р—Р°РЅРѕСЃРёРј РёРјСЏ С„Р°Р№Р»Р°
 									SendMessage(ga_SelWnd[wnd_SelTest], LB_GETTEXT, file, (LPARAM)&tstr);
 									if(!g_Test.LoadTest(tstr))
 									{
-										//___ Выведем ошибку
+										//___ Р’С‹РІРµРґРµРј РѕС€РёР±РєСѓ
 										HideAll();
-										SetWindowText(g_About, "Ошибка загрузки теста");
+										SetWindowText(g_About, "РћС€РёР±РєР° Р·Р°РіСЂСѓР·РєРё С‚РµСЃС‚Р°");
 										if(g_About)
 											ShowWindow(g_About, SW_NORMAL);
 										return 0;
@@ -199,23 +199,23 @@ LRESULT CALLBACK MainWndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 							}
 							else
 							{
-								// Тоже для множественного выбора
+								// РўРѕР¶Рµ РґР»СЏ РјРЅРѕР¶РµСЃС‚РІРµРЅРЅРѕРіРѕ РІС‹Р±РѕСЂР°
 								if(SendMessage(ga_SelWnd[wnd_SelTest], LB_GETSELCOUNT, NULL, NULL) < 2)
 								{
-									MessageBox(gh_Wnd, "Выберите несколько доступных тестов\nудерживая клавишу Shift.\nИли выберите режим - Выбранный тест.", "Сообщение", MB_OK|MB_ICONEXCLAMATION|MB_APPLMODAL);
+									MessageBox(gh_Wnd, "Р’С‹Р±РµСЂРёС‚Рµ РЅРµСЃРєРѕР»СЊРєРѕ РґРѕСЃС‚СѓРїРЅС‹С… С‚РµСЃС‚РѕРІ\nСѓРґРµСЂР¶РёРІР°СЏ РєР»Р°РІРёС€Сѓ Shift.\nРР»Рё РІС‹Р±РµСЂРёС‚Рµ СЂРµР¶РёРј - Р’С‹Р±СЂР°РЅРЅС‹Р№ С‚РµСЃС‚.", "РЎРѕРѕР±С‰РµРЅРёРµ", MB_OK|MB_ICONEXCLAMATION|MB_APPLMODAL);
 									return 0;
 								}
 								else
 								{
-									// Заносим имена файлов в список
+									// Р—Р°РЅРѕСЃРёРј РёРјРµРЅР° С„Р°Р№Р»РѕРІ РІ СЃРїРёСЃРѕРє
 								}
 							}
 							g_CurQuwest = 0;
-							//___ Выведем служебную информацию о тесте
+							//___ Р’С‹РІРµРґРµРј СЃР»СѓР¶РµР±РЅСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ С‚РµСЃС‚Рµ
 							ShowStart();
 						}
 						return 0;
-					//___ Нажатие кнопки "Далее"
+					//___ РќР°Р¶Р°С‚РёРµ РєРЅРѕРїРєРё "Р”Р°Р»РµРµ"
 					case ID_Next:
 						if(HIWORD(wParam) == BN_CLICKED)
 						{
@@ -238,7 +238,7 @@ LRESULT CALLBACK MainWndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 							}
 							if(ctr == 0 && g_CurQuwest > 0)
 							{
-								MessageBox(hwnd, "ВЫ НЕ ВЫБРАЛИ ВАРИАНТ ОТВЕТА", "Сообщение", MB_OK | MB_APPLMODAL | MB_ICONEXCLAMATION);
+								MessageBox(hwnd, "Р’Р« РќР• Р’Р«Р‘Р РђР›Р Р’РђР РРђРќРў РћРўР’Р•РўРђ", "РЎРѕРѕР±С‰РµРЅРёРµ", MB_OK | MB_APPLMODAL | MB_ICONEXCLAMATION);
 								return 0;
 							}
 							else
@@ -251,20 +251,20 @@ LRESULT CALLBACK MainWndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 								{
                                     g_CurQuwest++;
 									_itoa_s(g_CurQuwest, szBuf, 10);
-									str = "ВОПРОС... ";
+									str = "Р’РћРџР РћРЎ... ";
 									str += szBuf;
 									_itoa_s(g_QuwestCount, szBuf, 10);
-									str += " из ";
+									str += " РёР· ";
 									str += szBuf;
 									SetWindowText(ga_TestWnd[wnd_PIQuwest], str.c_str());
-									//___ Формируем бланк вопроса
+									//___ Р¤РѕСЂРјРёСЂСѓРµРј Р±Р»Р°РЅРє РІРѕРїСЂРѕСЃР°
 									str = '\n' + g_Quwest.m_Quwest + "\n\n";
-									//___ Теперь варианты ответов
+									//___ РўРµРїРµСЂСЊ РІР°СЂРёР°РЅС‚С‹ РѕС‚РІРµС‚РѕРІ
 									for(int i = 0; i < 8; i++)
 									{
 										if(g_Quwest.m_Otvet[i] != "")
 										{
-											str += "Ответ №";
+											str += "РћС‚РІРµС‚ в„–";
 											str += ga_OtvNum[i];
 											str += ":";
 											str += " ";
@@ -282,7 +282,7 @@ LRESULT CALLBACK MainWndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 								}
 								else
 								{
-									//___ Тест закончен вывести статистику
+									//___ РўРµСЃС‚ Р·Р°РєРѕРЅС‡РµРЅ РІС‹РІРµСЃС‚Рё СЃС‚Р°С‚РёСЃС‚РёРєСѓ
 									str = g_StrStat;
 									str += g_Test.GetStatistic();
 									SetWindowText(g_About, str.c_str());
@@ -303,7 +303,7 @@ LRESULT CALLBACK MainWndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 						g_Test.Reset();
 						HideAll();
 						SendMessage(ga_SelWnd[wnd_SelTest], LB_RESETCONTENT, NULL, NULL);
-						//___ В ДВ версии доступен только один режим
+						//___ Р’ Р”Р’ РІРµСЂСЃРёРё РґРѕСЃС‚СѓРїРµРЅ С‚РѕР»СЊРєРѕ РѕРґРёРЅ СЂРµР¶РёРј
 						SendMessage(ga_SelWnd[wnd_OneTest], BM_SETCHECK, BST_CHECKED, NULL);
 						hFind = FindFirstFile("*.tst", &FindData);
 						if (hFind != INVALID_HANDLE_VALUE)
@@ -317,7 +317,7 @@ LRESULT CALLBACK MainWndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 						}
 						else
 						{
-							MessageBox(gh_Wnd, "Не обнаружено ни одного теста!", "Внимание!", MB_OK | MB_ICONEXCLAMATION);
+							MessageBox(gh_Wnd, "РќРµ РѕР±РЅР°СЂСѓР¶РµРЅРѕ РЅРё РѕРґРЅРѕРіРѕ С‚РµСЃС‚Р°!", "Р’РЅРёРјР°РЅРёРµ!", MB_OK | MB_ICONEXCLAMATION);
 							return 0;
 						}
 						for (int i = 0; i < COUNT_SWND; i++)
@@ -347,36 +347,36 @@ void ShowStart(void)
 	string str;
 
 	g_Test.TestParam(&info);
-	//___ Название теста
+	//___ РќР°Р·РІР°РЅРёРµ С‚РµСЃС‚Р°
 	SetWindowText(ga_TestWnd[wnd_PTextOut], info.m_Name.c_str());
-	//___ Предупреждение
-	str = "\n\tБУДТЕ ПРЕДЕЛЬНО ВНИМАТЕЛЬНЫ ПРИ ВЫБОРЕ ОТВЕТОВ\n";
-	str += "Достаточно отметить один неправильный ответ, и вопрос не будет защитан даже если присутствует отмеченный правильный ответ\n";
+	//___ РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ
+	str = "\n\tР‘РЈР”РўР• РџР Р•Р”Р•Р›Р¬РќРћ Р’РќРРњРђРўР•Р›Р¬РќР« РџР Р Р’Р«Р‘РћР Р• РћРўР’Р•РўРћР’\n";
+	str += "Р”РѕСЃС‚Р°С‚РѕС‡РЅРѕ РѕС‚РјРµС‚РёС‚СЊ РѕРґРёРЅ РЅРµРїСЂР°РІРёР»СЊРЅС‹Р№ РѕС‚РІРµС‚, Рё РІРѕРїСЂРѕСЃ РЅРµ Р±СѓРґРµС‚ Р·Р°С‰РёС‚Р°РЅ РґР°Р¶Рµ РµСЃР»Рё РїСЂРёСЃСѓС‚СЃС‚РІСѓРµС‚ РѕС‚РјРµС‡РµРЅРЅС‹Р№ РїСЂР°РІРёР»СЊРЅС‹Р№ РѕС‚РІРµС‚\n";
 	if(info.m_MultiQ)
 	{
-		str += "ВНИМАНИЕ:\nв тесте присутствуют вопросы, на которые есть несколько правильных вариантов ответа.\n";
+		str += "Р’РќРРњРђРќРР•:\nРІ С‚РµСЃС‚Рµ РїСЂРёСЃСѓС‚СЃС‚РІСѓСЋС‚ РІРѕРїСЂРѕСЃС‹, РЅР° РєРѕС‚РѕСЂС‹Рµ РµСЃС‚СЊ РЅРµСЃРєРѕР»СЊРєРѕ РїСЂР°РІРёР»СЊРЅС‹С… РІР°СЂРёР°РЅС‚РѕРІ РѕС‚РІРµС‚Р°.\n";
 	}
 	if(info.m_RandBilet)
 	{
-		str += "Вопросы выбираются случайным образом\n";
+		str += "Р’РѕРїСЂРѕСЃС‹ РІС‹Р±РёСЂР°СЋС‚СЃСЏ СЃР»СѓС‡Р°Р№РЅС‹Рј РѕР±СЂР°Р·РѕРј\n";
 	}
-	str += "\n\tДля получения первого вопроса нажмите кнопку - ";
+	str += "\n\tР”Р»СЏ РїРѕР»СѓС‡РµРЅРёСЏ РїРµСЂРІРѕРіРѕ РІРѕРїСЂРѕСЃР° РЅР°Р¶РјРёС‚Рµ РєРЅРѕРїРєСѓ - ";
 	str += '"';
-	str += "Дальше";
+	str += "Р”Р°Р»СЊС€Рµ";
 	str += '"';
 	SetWindowText(ga_TestWnd[wnd_TextOut], str.c_str());
-	//___ Обновим панель информации
+	//___ РћР±РЅРѕРІРёРј РїР°РЅРµР»СЊ РёРЅС„РѕСЂРјР°С†РёРё
 	g_QuwestCount = info.m_QuwCount;
 	_itoa_s(g_CurQuwest, szBuf, 10);
-	str = "ВОПРОС... ";
+	str = "Р’РћРџР РћРЎ... ";
 	str += szBuf;
 	_itoa_s(g_QuwestCount, szBuf, 10);
-	str += " из ";
+	str += " РёР· ";
 	str += szBuf;
 	SetWindowText(ga_TestWnd[wnd_PIQuwest], str.c_str());
 	for(int i = 0; i < 8; i++)
 		EnableWindow(ga_TestWnd[wnd_Otv1 + i], false);
-	//___ Отображаем окошки
+	//___ РћС‚РѕР±СЂР°Р¶Р°РµРј РѕРєРѕС€РєРё
 	HideAll();
 	for(int i = 0; i < COUNT_TWND; i++)
 	{
@@ -387,8 +387,8 @@ void ShowStart(void)
 
 void HideAll(void)
 {
-	//___ Локальные переменные
-	int iter; // Итератор доступа
+	//___ Р›РѕРєР°Р»СЊРЅС‹Рµ РїРµСЂРµРјРµРЅРЅС‹Рµ
+	int iter; // РС‚РµСЂР°С‚РѕСЂ РґРѕСЃС‚СѓРїР°
 	//___
 	if(g_About)
 		ShowWindow(g_About, SW_HIDE);
@@ -413,7 +413,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hInstPrev, LPSTR lpCmdLine, 
 	HWND hWnd;
     WNDCLASS wc; 
 	MSG msg;
-	//___ Класс главного окна
+	//___ РљР»Р°СЃСЃ РіР»Р°РІРЅРѕРіРѕ РѕРєРЅР°
     wc.style = CS_SAVEBITS; 
     wc.lpfnWndProc = (WNDPROC) MainWndProc; 
     wc.cbClsExtra = 0; 
@@ -431,7 +431,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hInstPrev, LPSTR lpCmdLine, 
         return FALSE; 
 	}
 	
-	hWnd = CreateWindow("MainWindowClass", "Тест", WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX | WS_VISIBLE, CW_USEDEFAULT, CW_USEDEFAULT, 640, 480, NULL, NULL, hInstance, NULL);
+	hWnd = CreateWindow("MainWindowClass", "РўРµСЃС‚", WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX | WS_VISIBLE, CW_USEDEFAULT, CW_USEDEFAULT, 640, 480, NULL, NULL, hInstance, NULL);
 	if(!hWnd)
 		return FALSE;
 
@@ -447,46 +447,46 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hInstPrev, LPSTR lpCmdLine, 
 	
 	
 	string about;
-	about = "\nПрограмма является свободно-распространяемой.\n";
-	about += "Данная версия не является полноценной";
-	//___ Создаем элементы управления стартового окна
-	g_About = CreateWindowEx(NULL, RICHEDIT_CLASS, "О ПРОГРАММЕ", WS_CHILD | WS_VSCROLL | ES_MULTILINE | ES_WANTRETURN | ES_AUTOVSCROLL | ES_READONLY | SS_CENTER, 10, 10, 615, 210, hWnd, NULL, hInstance, NULL);
+	about = "\nРџСЂРѕРіСЂР°РјРјР° СЏРІР»СЏРµС‚СЃСЏ СЃРІРѕР±РѕРґРЅРѕ-СЂР°СЃРїСЂРѕСЃС‚СЂР°РЅСЏРµРјРѕР№.\n";
+	about += "Р”Р°РЅРЅР°СЏ РІРµСЂСЃРёСЏ РЅРµ СЏРІР»СЏРµС‚СЃСЏ РїРѕР»РЅРѕС†РµРЅРЅРѕР№";
+	//___ РЎРѕР·РґР°РµРј СЌР»РµРјРµРЅС‚С‹ СѓРїСЂР°РІР»РµРЅРёСЏ СЃС‚Р°СЂС‚РѕРІРѕРіРѕ РѕРєРЅР°
+	g_About = CreateWindowEx(NULL, RICHEDIT_CLASS, "Рћ РџР РћР“Р РђРњРњР•", WS_CHILD | WS_VSCROLL | ES_MULTILINE | ES_WANTRETURN | ES_AUTOVSCROLL | ES_READONLY | SS_CENTER, 10, 10, 615, 210, hWnd, NULL, hInstance, NULL);
 	SendMessage(g_About, EM_SETBKGNDCOLOR, NULL, GetSysColor(COLOR_BTNFACE));
 	SendMessage(g_About, EM_SETMARGINS, EC_LEFTMARGIN, 5);
 	SetWindowText(g_About, about.c_str()); 
 	ShowWindow(g_About, SW_NORMAL);
-	gh_Start = ga_SelWnd[wnd_Start] = CreateWindow("BUTTON", "СТАРТ", WS_CHILD | BS_FLAT, 250, 395, 100, 25, hWnd, (HMENU)ID_OkStart, hInstance, NULL);
+	gh_Start = ga_SelWnd[wnd_Start] = CreateWindow("BUTTON", "РЎРўРђР Рў", WS_CHILD | BS_FLAT, 250, 395, 100, 25, hWnd, (HMENU)ID_OkStart, hInstance, NULL);
 	ShowWindow(gh_Start, SW_NORMAL);
-	//___ Элементы управления режима выбора
-	ga_SelWnd[wnd_PSel] = CreateWindow("STATIC", "Выбор теста и режима тестирования", WS_CHILD | SS_CENTER, 10, 5, 615, 15, hWnd, NULL, hInstance, NULL);
-	ga_SelWnd[wnd_PSelTest] = CreateWindow("STATIC", "Список доступных тестов", WS_CHILD | SS_CENTER, 10, 30, 300, 15, hWnd, NULL, hInstance, NULL);
+	//___ Р­Р»РµРјРµРЅС‚С‹ СѓРїСЂР°РІР»РµРЅРёСЏ СЂРµР¶РёРјР° РІС‹Р±РѕСЂР°
+	ga_SelWnd[wnd_PSel] = CreateWindow("STATIC", "Р’С‹Р±РѕСЂ С‚РµСЃС‚Р° Рё СЂРµР¶РёРјР° С‚РµСЃС‚РёСЂРѕРІР°РЅРёСЏ", WS_CHILD | SS_CENTER, 10, 5, 615, 15, hWnd, NULL, hInstance, NULL);
+	ga_SelWnd[wnd_PSelTest] = CreateWindow("STATIC", "РЎРїРёСЃРѕРє РґРѕСЃС‚СѓРїРЅС‹С… С‚РµСЃС‚РѕРІ", WS_CHILD | SS_CENTER, 10, 30, 300, 15, hWnd, NULL, hInstance, NULL);
 	ga_SelWnd[wnd_SelTest] = CreateWindow("LISTBOX", "NULL", WS_CHILD | WS_BORDER | LBS_STANDARD, 10, 50, 300, 380, hWnd, (HMENU)ID_SelTest, hInstance, NULL);
-	ga_SelWnd[wnd_OneTest] = CreateWindow("BUTTON", "Выбранный тест", WS_CHILD | WS_GROUP | WS_TABSTOP | BS_AUTORADIOBUTTON | BS_FLAT, 350, 60, 260, 15, hWnd, NULL, hInstance, NULL);
-	ga_SelWnd[wnd_OneRQ] = CreateWindow("BUTTON", "По одному вопросу из выбранных", WS_CHILD | WS_DISABLED | BS_AUTORADIOBUTTON | BS_FLAT, 350, 80, 260, 15, hWnd, NULL, hInstance, NULL);
-	ga_SelWnd[wnd_OneRB] = CreateWindow("BUTTON", "По одному билету из выбранных", WS_CHILD | WS_DISABLED | BS_AUTORADIOBUTTON | BS_FLAT, 350, 100, 260, 15, hWnd, NULL, hInstance, NULL);
-	ga_SelWnd[wnd_PFIO] = CreateWindow("STATIC", "ФИО тестируемого", WS_CHILD | SS_CENTER, 350, 130, 260, 15, hWnd, NULL, hInstance, NULL);
+	ga_SelWnd[wnd_OneTest] = CreateWindow("BUTTON", "Р’С‹Р±СЂР°РЅРЅС‹Р№ С‚РµСЃС‚", WS_CHILD | WS_GROUP | WS_TABSTOP | BS_AUTORADIOBUTTON | BS_FLAT, 350, 60, 260, 15, hWnd, NULL, hInstance, NULL);
+	ga_SelWnd[wnd_OneRQ] = CreateWindow("BUTTON", "РџРѕ РѕРґРЅРѕРјСѓ РІРѕРїСЂРѕСЃСѓ РёР· РІС‹Р±СЂР°РЅРЅС‹С…", WS_CHILD | WS_DISABLED | BS_AUTORADIOBUTTON | BS_FLAT, 350, 80, 260, 15, hWnd, NULL, hInstance, NULL);
+	ga_SelWnd[wnd_OneRB] = CreateWindow("BUTTON", "РџРѕ РѕРґРЅРѕРјСѓ Р±РёР»РµС‚Сѓ РёР· РІС‹Р±СЂР°РЅРЅС‹С…", WS_CHILD | WS_DISABLED | BS_AUTORADIOBUTTON | BS_FLAT, 350, 100, 260, 15, hWnd, NULL, hInstance, NULL);
+	ga_SelWnd[wnd_PFIO] = CreateWindow("STATIC", "Р¤РРћ С‚РµСЃС‚РёСЂСѓРµРјРѕРіРѕ", WS_CHILD | SS_CENTER, 350, 130, 260, 15, hWnd, NULL, hInstance, NULL);
 	ga_SelWnd[wnd_FIO] = CreateWindow("EDIT", NULL, WS_CHILD | WS_BORDER, 350, 150, 260, 20, hWnd, NULL, hInstance, NULL);
-	ga_SelWnd[wnd_ChekRand] = CreateWindow("BUTTON", "Случайное формирование билета", WS_CHILD | WS_DISABLED | BS_AUTOCHECKBOX | BS_FLAT, 350, 200, 260, 15, hWnd, NULL, hInstance, NULL);
+	ga_SelWnd[wnd_ChekRand] = CreateWindow("BUTTON", "РЎР»СѓС‡Р°Р№РЅРѕРµ С„РѕСЂРјРёСЂРѕРІР°РЅРёРµ Р±РёР»РµС‚Р°", WS_CHILD | WS_DISABLED | BS_AUTOCHECKBOX | BS_FLAT, 350, 200, 260, 15, hWnd, NULL, hInstance, NULL);
 	ga_SelWnd[wnd_ERQC] = CreateWindow("EDIT", NULL, WS_CHILD | WS_BORDER | WS_DISABLED, 350, 220, 50, 20, hWnd, NULL, hInstance, NULL);
 	ga_SelWnd[wnd_URQC] = CreateUpDownControl(WS_CHILD | WS_DISABLED | UDS_WRAP | UDS_ARROWKEYS | UDS_SETBUDDYINT, 400, 220, 0, 20, hWnd, NULL, hInstance, ga_SelWnd[wnd_ERQC], 15, 1, 3);
-	ga_SelWnd[wnd_OnTime] = CreateWindow("BUTTON", "Тест на время", WS_CHILD | WS_DISABLED | BS_AUTOCHECKBOX | BS_FLAT, 350, 260, 260, 15, hWnd, NULL, hInstance, NULL);
-	ga_SelWnd[wnd_Start] = CreateWindow("BUTTON", "СТАРТ", WS_CHILD | BS_FLAT, 525, 395, 100, 25, hWnd, (HMENU)ID_Start, hInstance, NULL);
-	//___ Элементы управления режима тестирования
+	ga_SelWnd[wnd_OnTime] = CreateWindow("BUTTON", "РўРµСЃС‚ РЅР° РІСЂРµРјСЏ", WS_CHILD | WS_DISABLED | BS_AUTOCHECKBOX | BS_FLAT, 350, 260, 260, 15, hWnd, NULL, hInstance, NULL);
+	ga_SelWnd[wnd_Start] = CreateWindow("BUTTON", "РЎРўРђР Рў", WS_CHILD | BS_FLAT, 525, 395, 100, 25, hWnd, (HMENU)ID_Start, hInstance, NULL);
+	//___ Р­Р»РµРјРµРЅС‚С‹ СѓРїСЂР°РІР»РµРЅРёСЏ СЂРµР¶РёРјР° С‚РµСЃС‚РёСЂРѕРІР°РЅРёСЏ
 	ga_TestWnd[wnd_PTextOut] = CreateWindow("STATIC", "TEXT", WS_CHILD | SS_CENTER, 10, 5, 615, 15, hWnd, NULL, hInstance, NULL);
 	ga_TestWnd[wnd_TextOut] = CreateWindowEx(NULL, RICHEDIT_CLASS, NULL, WS_CHILD | WS_VSCROLL | ES_MULTILINE | ES_WANTRETURN | ES_AUTOVSCROLL | ES_READONLY, 10, 20, 615, 300, hWnd, NULL, hInstance, NULL);
 	SendMessage(ga_TestWnd[wnd_TextOut], EM_SETBKGNDCOLOR, NULL, GetSysColor(COLOR_BTNFACE));
 	SendMessage(ga_TestWnd[wnd_TextOut], EM_SETMARGINS, EC_LEFTMARGIN, 5);
-	ga_TestWnd[wnd_PInfo] = CreateWindow("BUTTON", "ИНФОРМАЦИЯ", WS_CHILD | BS_GROUPBOX | BS_CENTER | BS_FLAT, 10, 325, 220, 95, hWnd, NULL, hInstance, NULL);
-	ga_TestWnd[wnd_PITime] = CreateWindow("STATIC", "ОСТАЛОСЬ ВРЕМЕНИ - 00:00", WS_CHILD | WS_DISABLED, 15, 345, 210, 15, hWnd, NULL, hInstance, NULL);
-	ga_TestWnd[wnd_PITest] = CreateWindow("STATIC", "ТЕСТ......... 1 из 1", WS_CHILD, 15, 362, 210, 15, hWnd, NULL, hInstance, NULL);
-	ga_TestWnd[wnd_PIBilet] = CreateWindow("STATIC", "БИЛЕТ...... случайно", WS_CHILD, 15, 379, 210, 15, hWnd, NULL, hInstance, NULL);
-	ga_TestWnd[wnd_PIQuwest] = CreateWindow("STATIC", "ВОПРОС... ", WS_CHILD, 15, 396, 210, 15, hWnd, NULL, hInstance, NULL);
-	ga_TestWnd[wnd_ChecGroup] = CreateWindow("BUTTON", "ВЫБЕРИТЕ ПРАВИЛЬНЫЙ ОТВЕТ", WS_CHILD | BS_GROUPBOX | BS_CENTER | BS_FLAT, 240, 325, 385, 95, hWnd, NULL, hInstance, NULL);
+	ga_TestWnd[wnd_PInfo] = CreateWindow("BUTTON", "РРќР¤РћР РњРђР¦РРЇ", WS_CHILD | BS_GROUPBOX | BS_CENTER | BS_FLAT, 10, 325, 220, 95, hWnd, NULL, hInstance, NULL);
+	ga_TestWnd[wnd_PITime] = CreateWindow("STATIC", "РћРЎРўРђР›РћРЎР¬ Р’Р Р•РњР•РќР - 00:00", WS_CHILD | WS_DISABLED, 15, 345, 210, 15, hWnd, NULL, hInstance, NULL);
+	ga_TestWnd[wnd_PITest] = CreateWindow("STATIC", "РўР•РЎРў......... 1 РёР· 1", WS_CHILD, 15, 362, 210, 15, hWnd, NULL, hInstance, NULL);
+	ga_TestWnd[wnd_PIBilet] = CreateWindow("STATIC", "Р‘РР›Р•Рў...... СЃР»СѓС‡Р°Р№РЅРѕ", WS_CHILD, 15, 379, 210, 15, hWnd, NULL, hInstance, NULL);
+	ga_TestWnd[wnd_PIQuwest] = CreateWindow("STATIC", "Р’РћРџР РћРЎ... ", WS_CHILD, 15, 396, 210, 15, hWnd, NULL, hInstance, NULL);
+	ga_TestWnd[wnd_ChecGroup] = CreateWindow("BUTTON", "Р’Р«Р‘Р•Р РРўР• РџР РђР’РР›Р¬РќР«Р™ РћРўР’Р•Рў", WS_CHILD | BS_GROUPBOX | BS_CENTER | BS_FLAT, 240, 325, 385, 95, hWnd, NULL, hInstance, NULL);
 	for(int i = 0; i < 8; i++)
 	{
         ga_TestWnd[wnd_Otv1 + i] = CreateWindow("BUTTON", ga_OtvNum[i], WS_CHILD | WS_DISABLED | BS_AUTOCHECKBOX | BS_LEFTTEXT | BS_FLAT, 260 + (i * 45), 350, 30, 15, hWnd, (HMENU)ID_Otv1 + i, hInstance, NULL);
 	}
-	ga_TestWnd[wnd_Next] = CreateWindow("BUTTON", "ДАЛЬШЕ", WS_CHILD | BS_CENTER | BS_DEFPUSHBUTTON | BS_FLAT, 330, 380, 200, 25, hWnd, (HMENU)ID_Next, hInstance, NULL);
+	ga_TestWnd[wnd_Next] = CreateWindow("BUTTON", "Р”РђР›Р¬РЁР•", WS_CHILD | BS_CENTER | BS_DEFPUSHBUTTON | BS_FLAT, 330, 380, 200, 25, hWnd, (HMENU)ID_Next, hInstance, NULL);
 	
 	SendMessage(ga_SelWnd[wnd_FIO], EM_SETLIMITTEXT, 32, NULL);
 

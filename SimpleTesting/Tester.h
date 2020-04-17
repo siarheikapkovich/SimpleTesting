@@ -1,4 +1,4 @@
-#include <string>
+п»ї#include <string>
 #include <vector>
 #include <fstream>
 
@@ -8,51 +8,51 @@ enum MyE_TPS {TPS_NULL, TPS_TEST, TPS_MULTITEST, TPS_ONEQUWEST, TPS_CREATE, TPS_
 
 struct MyS_Quwest
 {
-	string m_Quwest;							// Вопрос
-	string m_Otvet[8];							// Ответы
-	int    m_Valid[8];							// Флаг правильности ответа или количество баллов
+	string m_Quwest;							// Р’РѕРїСЂРѕСЃ
+	string m_Otvet[8];							// РћС‚РІРµС‚С‹
+	int    m_Valid[8];							// Р¤Р»Р°Рі РїСЂР°РІРёР»СЊРЅРѕСЃС‚Рё РѕС‚РІРµС‚Р° РёР»Рё РєРѕР»РёС‡РµСЃС‚РІРѕ Р±Р°Р»Р»РѕРІ
 };
 
 struct MyS_Info
 {
-	string m_Name;								// Имя теста (название предмета)
-	int m_QuwCount;								// Количество вопросов в билете, при случайном формировании
-	int m_Time;									// Время на один вопрос в секундах
-	int m_BiletCount;							// Количество билетов
-	bool m_RandBilet;							// Флаг случайного формирования билета
-	bool m_MultiQ;								// Загружать или нет вопросы с множественным ответом (ДВ)
+	string m_Name;								// РРјСЏ С‚РµСЃС‚Р° (РЅР°Р·РІР°РЅРёРµ РїСЂРµРґРјРµС‚Р°)
+	int m_QuwCount;								// РљРѕР»РёС‡РµСЃС‚РІРѕ РІРѕРїСЂРѕСЃРѕРІ РІ Р±РёР»РµС‚Рµ, РїСЂРё СЃР»СѓС‡Р°Р№РЅРѕРј С„РѕСЂРјРёСЂРѕРІР°РЅРёРё
+	int m_Time;									// Р’СЂРµРјСЏ РЅР° РѕРґРёРЅ РІРѕРїСЂРѕСЃ РІ СЃРµРєСѓРЅРґР°С…
+	int m_BiletCount;							// РљРѕР»РёС‡РµСЃС‚РІРѕ Р±РёР»РµС‚РѕРІ
+	bool m_RandBilet;							// Р¤Р»Р°Рі СЃР»СѓС‡Р°Р№РЅРѕРіРѕ С„РѕСЂРјРёСЂРѕРІР°РЅРёСЏ Р±РёР»РµС‚Р°
+	bool m_MultiQ;								// Р—Р°РіСЂСѓР¶Р°С‚СЊ РёР»Рё РЅРµС‚ РІРѕРїСЂРѕСЃС‹ СЃ РјРЅРѕР¶РµСЃС‚РІРµРЅРЅС‹Рј РѕС‚РІРµС‚РѕРј (Р”Р’)
 };
 
 struct MyS_Test
 {
-	MyS_Info m_Info;							// Информация о тесте
-	vector<MyS_Quwest> m_AllQuwests;			// Все вопросы
-	vector<MyS_Quwest> m_CyrrentBilet;			// Активный билет
+	MyS_Info m_Info;							// РРЅС„РѕСЂРјР°С†РёСЏ Рѕ С‚РµСЃС‚Рµ
+	vector<MyS_Quwest> m_AllQuwests;			// Р’СЃРµ РІРѕРїСЂРѕСЃС‹
+	vector<MyS_Quwest> m_CyrrentBilet;			// РђРєС‚РёРІРЅС‹Р№ Р±РёР»РµС‚
 };
 
 class MyC_Tester
 {
-	//___ Закрытые члены класса
+	//___ Р—Р°РєСЂС‹С‚С‹Рµ С‡Р»РµРЅС‹ РєР»Р°СЃСЃР°
 	//string m_Error;
-	MyE_TPS m_State;										// Режим работы
-	int m_CurrentTest;										// Номер активного теста
-	int m_CurQuwest;										// Текущий вопрос
-	string m_StrStatistik;									// Сюда сохраняем результаты
-	vector<MyS_Test> m_Tests;								// Хранилище тестов
-	//___ Закрытые методы класса
+	MyE_TPS m_State;										// Р РµР¶РёРј СЂР°Р±РѕС‚С‹
+	int m_CurrentTest;										// РќРѕРјРµСЂ Р°РєС‚РёРІРЅРѕРіРѕ С‚РµСЃС‚Р°
+	int m_CurQuwest;										// РўРµРєСѓС‰РёР№ РІРѕРїСЂРѕСЃ
+	string m_StrStatistik;									// РЎСЋРґР° СЃРѕС…СЂР°РЅСЏРµРј СЂРµР·СѓР»СЊС‚Р°С‚С‹
+	vector<MyS_Test> m_Tests;								// РҐСЂР°РЅРёР»РёС‰Рµ С‚РµСЃС‚РѕРІ
+	//___ Р—Р°РєСЂС‹С‚С‹Рµ РјРµС‚РѕРґС‹ РєР»Р°СЃСЃР°
 	void GenerateBilet(void);
 public:
 	string Uncrypt(string Text);
 	string Crypt(string Text);
 
-	MyC_Tester();																		// Конструктор по умолчанию
-	bool LoadTest(const char *file);						// Загрузка теста
-	bool NextQuwest(MyS_Quwest *param);												// Получить следующий вопрос с ответами
-	void Reset(void);																	// Сброс всех параметров
-	void Restart(void);																	// Тот же тест, но с новыми вопросами
-	bool IsValid(void);																	// Проверка на готовность (тесты загружены, билеты сформированы и т.д.)
-	void TestParam(MyS_Info *param, bool getset = true);								// Получение/установка параметров загруженного теста
-	string GetStatistic(void);															// Вывод статистики
+	MyC_Tester();																		// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
+	bool LoadTest(const char *file);						// Р—Р°РіСЂСѓР·РєР° С‚РµСЃС‚Р°
+	bool NextQuwest(MyS_Quwest *param);												// РџРѕР»СѓС‡РёС‚СЊ СЃР»РµРґСѓСЋС‰РёР№ РІРѕРїСЂРѕСЃ СЃ РѕС‚РІРµС‚Р°РјРё
+	void Reset(void);																	// РЎР±СЂРѕСЃ РІСЃРµС… РїР°СЂР°РјРµС‚СЂРѕРІ
+	void Restart(void);																	// РўРѕС‚ Р¶Рµ С‚РµСЃС‚, РЅРѕ СЃ РЅРѕРІС‹РјРё РІРѕРїСЂРѕСЃР°РјРё
+	bool IsValid(void);																	// РџСЂРѕРІРµСЂРєР° РЅР° РіРѕС‚РѕРІРЅРѕСЃС‚СЊ (С‚РµСЃС‚С‹ Р·Р°РіСЂСѓР¶РµРЅС‹, Р±РёР»РµС‚С‹ СЃС„РѕСЂРјРёСЂРѕРІР°РЅС‹ Рё С‚.Рґ.)
+	void TestParam(MyS_Info *param, bool getset = true);								// РџРѕР»СѓС‡РµРЅРёРµ/СѓСЃС‚Р°РЅРѕРІРєР° РїР°СЂР°РјРµС‚СЂРѕРІ Р·Р°РіСЂСѓР¶РµРЅРЅРѕРіРѕ С‚РµСЃС‚Р°
+	string GetStatistic(void);															// Р’С‹РІРѕРґ СЃС‚Р°С‚РёСЃС‚РёРєРё
 	//int GetTestCount(void);
-	//bool GetTestInfo(const char *file, MyS_Info *info);									// Упрощенная функция загрузки файла.
+	//bool GetTestInfo(const char *file, MyS_Info *info);									// РЈРїСЂРѕС‰РµРЅРЅР°СЏ С„СѓРЅРєС†РёСЏ Р·Р°РіСЂСѓР·РєРё С„Р°Р№Р»Р°.
 };
