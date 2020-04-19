@@ -1,27 +1,27 @@
 ﻿#include <algorithm>
 #include "Tester.h"
 
-//string g_TempStr = "";
+const string g_Key = "siarheikapkovich";
 int g_Ball = 0;
-string alphabet = " 0@1#2$3%4^5&6*7=8-9+АаБбВвГгДдЕеЁёЖжЗзИиКкЛлМмНнОоПпРрСсТтУуФфХхЪъЦцЧчЬьШшЩщЫыЭэЮюЯяЙйAaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz";
+const string g_Alphabet = " 0@1#2$3%4^5&6*7=8-9+АаБбВвГгДдЕеЁёЖжЗзИиКкЛлМмНнОоПпРрСсТтУуФфХхЪъЦцЧчЬьШшЩщЫыЭэЮюЯяЙйAaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz";
 
 string Cryptor(string code, string text, bool sage)
 {
-	int shift = 0;
-	int orig = 0;
-	int ref = 0;
+	int shift  = 0;
+	int orig   = 0;
+	int ref    = 0;
 	int longer = 0;
-	int couch = 0;
+	int couch  = 0;
 	string str = "";
 	string::size_type i_cod;
 	string::size_type i_text;
 
 	longer = (int)code.size() - 1;
-	couch = (int)alphabet.size() - 1;
+	couch = (int)g_Alphabet.size() - 1;
 	for(int i = 0; i < (int)text.size(); i++)
 	{
-		i_text = alphabet.find(text[i]);
-		i_cod = alphabet.find(code[ref]);
+		i_text = g_Alphabet.find(text[i]);
+		i_cod = g_Alphabet.find(code[ref]);
 		if(i_text != string::npos && i_cod != string::npos)
 		{
 			if(sage)
@@ -32,7 +32,7 @@ string Cryptor(string code, string text, bool sage)
 			shift += orig;
 			if (shift > couch - 1) 
 				shift -= couch;
-			str += alphabet[shift];
+			str += g_Alphabet[shift];
 		}
 		else
 			str += text[i];

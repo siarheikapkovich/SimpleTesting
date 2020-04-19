@@ -21,9 +21,15 @@
     <ClCompile Include="Tester.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="Cryptor.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Tester.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Cryptor.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
