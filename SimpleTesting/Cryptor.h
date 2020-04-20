@@ -17,4 +17,5 @@ public:
 private:
 	string m_TempStr;
 	const string g_Alphabet = " 0@1#2$3%4^5&6*7=8-9+АаБбВвГгДдЕеЁёЖжЗзИиКкЛлМмНнОоПпРрСсТтУуФфХхЪъЦцЧчЬьШшЩщЫыЭэЮюЯяЙйAaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz";
+	void TwoModeFun(const string inString, const string inKey = g_DefKey, bool inSage = true);
 };
